@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Header() {
+function Header({score, bestScore}) {
     return (
         <div className="heading">
             <h1 className="title">2048</h1>
             <div className="scores-container">
-                <div className="score-container">0</div>
-                <div className="best-container">0</div>
+                <div className="score-container">{score}</div>
+                <div className="best-container">{bestScore}</div>
             </div>
         </div>
     );
