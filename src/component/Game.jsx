@@ -1,42 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
+import times from 'loadsh/times';
+import { MAX_POS } from "../constant";
+import { getInitialTileList } from "../util/tile";
 
 function Game() {
+    const [tileList, setTileList] = useState(getInitialTileList);
     return (
         <div className="game-container">
             <div className="grid-container">
-                <div className="grid-row">
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                </div>
-                <div className="grid-row">
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                </div>
-                <div className="grid-row">
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                </div>
-                <div className="grid-row">
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                    <div className="grid-cell"></div>
-                </div>
+                {times(MAX_POS, () => (
+                    <div className="grid-row">
+                        {times(MAX_POS, () => (
+                            <div className="grid-cell"></div>
+                        ))}
+                    </div>
+                ))}
             </div>
 
             <div className="tile-container">
-                <div className="tile tile-2 tile-position-3-1 tile-new">
-                    <div className="tile-inner">2</div>
-                </div>
-                <div className="tile tile-2 tile-position-4-1 tile-new">
-                    <div className="tile-inner">2</div>
-                </div>
+                {tileList.map(item => (
+                    <div className={`tile tile-${item.value} tile-position-${item.x}-${item.y}`}>
+                        <div className="tile-inner">{item.value}</div>
+                    </div>
+                ))}
             </div>
         </div>
     );
