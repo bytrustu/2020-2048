@@ -5,10 +5,10 @@ import { getInitialTileList } from "../util/tile";
 import useMoveTile from "../hook/useMoveTile";
 import Tile from "./Tile";
 
-function Game() {
+function Game({setScore}) {
     const [tileList, setTileList] = useState(getInitialTileList);
     console.log(tileList)
-    useMoveTile({tileList, setTileList});
+    useMoveTile({tileList, setTileList, setScore});
 
     return (
         <div className="game-container">

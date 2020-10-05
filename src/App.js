@@ -9,7 +9,7 @@ function App() {
     <div className="container">
       <Header score={score} bestScore={0}/>
       <AboveGame/>
-      <Game/>
+      <Game setScore={setScore}/>
     </div>
 
   );
